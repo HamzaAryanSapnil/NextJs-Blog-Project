@@ -1,6 +1,7 @@
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../../components/SearchForm";
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+  const query = (await searchParams).query;
   return (
     <main>
       <section className="pink_container">
@@ -10,7 +11,7 @@ export default function Home() {
         <p className="sub-heading !max-w-3xl">
           Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competitions
         </p>
-        <SearchForm/>
+        <SearchForm query={query} />
       </section>
     </main>
   );

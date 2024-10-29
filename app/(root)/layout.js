@@ -1,13 +1,13 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React from "react";
+import Navbar from "../../components/Navbar";
 
-const layout = ({children}) => {
+const layout = ({ children }) => {
   return (
-    <main className='font-work-sans min-h-screen ' >
-        <Navbar/>
-        {children}
+    <main className="font-work-sans min-h-screen ">
+      <Navbar />
+      {children}
     </main>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
