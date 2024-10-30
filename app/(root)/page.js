@@ -1,20 +1,15 @@
 import StartupCard from "@/components/StarupCard";
 import SearchForm from "../../components/SearchForm";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home({ searchParams }) {
   const query = (await searchParams).query;
-  const posts = [
-    {
-      _createdAt: new Date(),
-      view: 55,
-      author: { _id: 1, name: 'Hamza' },
-      _id: 1,
-      description: "This is a description",
-      image: "https://i.ibb.co.com/yffkJ47/IMG-20220304-151615.jpg",
-      category: "Tea",
-      title: "The Famous Seven Colour Tea of JAFLONG Shylhet",
-    },
-  ];
+  const params = {search: query || null};
+
+  const {data: posts} = await sanityFetch({query: STARTUPS_QUERY, params})
+
+ 
   return (
     <main>
       {/* hero section */}
@@ -45,6 +40,7 @@ export default async function Home({ searchParams }) {
           )}
         </ul>
       </section>
+      <SanityLive/>
     </main>
   );
 }
