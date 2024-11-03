@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
 
 const StartupCard = ({ post }) => {
   const {
@@ -37,8 +38,8 @@ const StartupCard = ({ post }) => {
         </div>
         <Link href={`/user/${author?._id}`}>
           <Image
-            src={"https://placehold.co/48x48"}
-            alt="placeholder"
+            src={author?.image}
+            alt={author?.name}
             width={48}
             height={48}
             className="rounded-full"
@@ -68,5 +69,15 @@ const StartupCard = ({ post }) => {
     </li>
   );
 };
+
+export const StartupCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index) => (
+      <li key={cn("skeleton", index)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
 
 export default StartupCard;
